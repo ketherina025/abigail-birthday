@@ -45,11 +45,17 @@ function updateCountdown() {
     const now = new Date().getTime();
     const distance = birthday - now;
 
-    if (distance < 0) {
-        document.getElementById("days").textContent = "0";
-        document.getElementById("hours").textContent = "0";
-        document.getElementById("minutes").textContent = "0";
-        document.getElementById("seconds").textContent = "0";
+    const daysEl = document.getElementById("days");
+    const hoursEl = document.getElementById("hours");
+    const minutesEl = document.getElementById("minutes");
+    const secondsEl = document.getElementById("seconds");
+    const timerContainer = document.getElementById("timer");
+
+    // Se já chegou a data/passou
+    if (distance <= 0) {
+        if (timerContainer) {
+            timerContainer.innerHTML = "<h3 style='color: #ff4757; font-size: 1.5rem; text-align: center;'>¡Feliz Cumpleaños, Nahomy! 🎉❤️</h3>";
+        }
         return;
     }
 
@@ -58,14 +64,15 @@ function updateCountdown() {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    if (document.getElementById("days")) document.getElementById("days").textContent = days;
-    if (document.getElementById("hours")) document.getElementById("hours").textContent = hours;
-    if (document.getElementById("minutes")) document.getElementById("minutes").textContent = minutes;
-    if (document.getElementById("seconds")) document.getElementById("seconds").textContent = seconds;
+    if (daysEl) daysEl.textContent = days;
+    if (hoursEl) hoursEl.textContent = hours;
+    if (minutesEl) minutesEl.textContent = minutes;
+    if (secondsEl) secondsEl.textContent = seconds;
 }
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
+
 
 /* =========================
    CREATE STARS
