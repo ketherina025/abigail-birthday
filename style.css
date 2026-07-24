@@ -1,5 +1,5 @@
 /* =========================================
-   CONFIGURAÇÕES GERAIS E UNIFICAÇÃO
+   CONFIGURAÇÕES GERAIS E FUNDO ESTRELADO
 ========================================= */
 * {
     margin: 0;
@@ -8,53 +8,31 @@
 }
 
 body {
-    /* Define o fundo escuro (noite) para o site INTEIRO */
-    background-color: #0b101f; /* Um azul marinho bem escuro, quase preto */
-    color: #f0f0f0; /* Texto claro (quase branco) para ler no fundo escuro */
-    font-family: 'Poppins', sans-serif; /* Uma fonte moderna e limpa */
+    /* Fundo base: um azul petróleo bem escuro */
+    background-color: #050812; 
+    color: #f0f0f0;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.8;
+    letter-spacing: 0.8px;
     
-    /* Melhora o espaçamento que você achou apertado */
-    line-height: 1.8; /* Espaço confortável entre as linhas */
-    letter-spacing: 0.8px; /* Espaço elegante entre as letras */
+    /* Criação das Estrelas com Gradiente Radial (sem imagens!) */
+    /* Camada 1: Estrelas pequenas e densas */
+    background-image: 
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
+        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
+    
+    /* Tamanho e Posição das camadas de estrelas */
+    background-size: 550px 550px, 350px 350px, 250px 250px;
+    background-position: 0 0, 40px 60px, 130px 270px;
+    
+    /* Aplica a animação para as estrelas piscarem */
+    animation: starsTwinkle 10s ease-in-out infinite;
+    
+    /* Garante que o fundo cubra toda a página ao rolar */
+    background-attachment: fixed;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-ul {
-    list-style: none;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px; /* Margem nas laterais para o texto não colar na tela */
-}
-
-/* Títulos globais - com um leve brilho "estelar" */
-h1, h2, h3 {
-    text-align: center;
-    color: #fff;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Brilho leve */
-    margin-bottom: 20px;
-}
-
-/* Parágrafos globais */
-p {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* =========================================
-   ESTILO DO HERO (A TELA DE ABERTURA)
-========================================= */
 #hero {
     height: 100vh;
     display: flex;
@@ -63,36 +41,11 @@ p {
     text-align: center;
     position: relative;
     
-    /* Gradiente sutil para simular o céu */
-    background: radial-gradient(circle, #1a2542 0%, #0b101f 70%);
+    /* Removemos o gradiente radial do hero para não brigar com as estrelas */
+    background: transparent; 
 }
 
-#hero h1 {
-    font-size: 3rem;
-    margin-bottom: 15px;
-}
 
-#hero p {
-    font-size: 1.2rem;
-    opacity: 0.9;
-}
-
-#startButton {
-    padding: 12px 24px;
-    background-color: #fff;
-    color: #0b101f;
-    border: none;
-    border-radius: 25px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-    margin-top: 20px;
-}
-
-#startButton:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-}
 
 /* =========================================
    ESTILO DA NOSSA HISTÓRIA
